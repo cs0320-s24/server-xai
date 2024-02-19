@@ -25,7 +25,7 @@ public final class Main {
     //        "Your horoscope for this project:\n"
     //            + "Entrust in the Strategy pattern, and it shall give thee the sovereignty to "
     //            + "decide and the dexterity to change direction in the realm of thy code.");
-    user_story_2();
+    user_story_4();
   }
 
   private void user_story_1() {
@@ -90,6 +90,19 @@ public final class Main {
       for (int i = 0; i < parser.ConvertedContent.size(); ++i) {
         System.out.println(parser.ConvertedContent.get(i));
       }
+    } catch (IOException e) {
+      System.err.println("Unable to fine/open the file");
+    }
+  }
+
+  public void user_story_4() {
+    String file_name =
+        "RI City & Town Income from American Community Survey 5-Year Estimates Source_ US Census Bureau, 2017-2021 American Community Survey 5-Year Estimates 2017-2021 - Sheet1.csv";
+    try {
+      FileInput file_input = new FileInput(file_name);
+      CSVParser parser = new CSVParser(file_input.file_reader, true);
+      parser.parse();
+      parser.search("Hopkinton");
     } catch (IOException e) {
       System.err.println("Unable to fine/open the file");
     }

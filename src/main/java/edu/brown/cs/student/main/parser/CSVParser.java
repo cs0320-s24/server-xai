@@ -1,6 +1,6 @@
 package edu.brown.cs.student.main.parser;
 
-import edu.brown.cs.student.main.FactoryFailureException;
+import edu.brown.cs.student.main.exceptions.FactoryFailureException;
 import edu.brown.cs.student.main.from_row.CreatorFromRow;
 import edu.brown.cs.student.main.input.FileInput;
 import java.io.BufferedReader;
@@ -208,5 +208,46 @@ public class CSVParser<T> {
         System.out.println(e.getMessage());
       }
     }
+  }
+  public String view_content(List<List<String>> content) {
+    int num_lines = content.size();
+    if (num_lines == 0) return "No content (found) to display";
+    StringBuilder sb = new StringBuilder();
+    // print the header if the csv file has a header
+    if (this.has_header) {
+      for (int j = 0; j < this.Header.size(); ++j) {
+        sb.append(this.Header.get(j)).append(" | ");
+      }
+      sb.append("\n");
+    }
+    for (int i = 0; i < num_lines; ++i) {
+      List<String> line = content.get(i);
+      for (int j = 0; j < line.size(); ++j) {
+        sb.append(line.get(j)).append(" | ");
+      }
+      sb.append("\n");
+    }
+    return sb.toString();
+  }
+
+  public String view_content(List<List<String>> content, int num_lines) {
+    num_lines = (Math.min(num_lines, content.size()));
+    if (num_lines == 0) return "No content (found) to display";
+    StringBuilder sb = new StringBuilder();
+    // print the header if the csv file has a header
+    if (this.has_header) {
+      for (int j = 0; j < this.Header.size(); ++j) {
+        sb.append(this.Header.get(j)).append(" | ");
+      }
+      sb.append("\n");
+    }
+    for (int i = 0; i < num_lines; ++i) {
+      List<String> line = content.get(i);
+      for (int j = 0; j < line.size(); ++j) {
+        sb.append(line.get(j)).append(" | ");
+      }
+      sb.append("\n");
+    }
+    return sb.toString();
   }
 }

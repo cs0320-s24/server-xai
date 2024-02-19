@@ -1,6 +1,6 @@
 package edu.brown.cs.student.main.from_row;
 
-import edu.brown.cs.student.main.FactoryFailureException;
+import edu.brown.cs.student.main.exceptions.FactoryFailureException;
 import edu.brown.cs.student.main.object_classes.Star;
 import java.util.List;
 

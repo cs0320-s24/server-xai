@@ -15,7 +15,7 @@ import java.util.Optional;
 // if the CSV file with the file_name is found, open the file and read its content using FileReader
 // and BufferedReader.
 public class FileInput {
-  private String file_name;
+  public final String file_name;
   private Path file_path;
   private File file;
   public BufferedReader file_reader;
